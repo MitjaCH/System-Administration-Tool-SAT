@@ -1,4 +1,4 @@
-# System Administration Tool
+# System Administration Tool [SAT]
 
 A simple command-line tool for viewing system information, storage capacity, CPU usage, memory usage, network information, and managing processes.
 
