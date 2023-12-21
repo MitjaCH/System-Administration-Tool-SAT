@@ -22,7 +22,7 @@ class SystemAdminTool:
 
     def display_menu(self):
         self.clear_screen()
-        big_title = (
+        menu_title = (
             f"\n\n{CYAN}███████╗ █████╗ ████████╗    ██████╗ ██╗   ██╗    ███╗   ███╗██╗████████╗  ██╗ █████╗  ██████╗██╗  ██╗\n"
             f"{CYAN}██╔════╝██╔══██╗╚══██╔══╝    ██╔══██╗╚██╗ ██╔╝    ████╗ ████║██║╚══██╔══╝  ██║██╔══██╗██╔════╝██║  ██║\n"
             f"{CYAN}███████╗███████║   ██║       ██████╔╝ ╚████╔╝     ██╔████╔██║██║   ██║     ██║███████║██║     ███████║\n"
@@ -30,19 +30,30 @@ class SystemAdminTool:
             f"{CYAN}███████║██║  ██║   ██║       ██████╔╝   ██║       ██║ ╚═╝ ██║██║   ██║╚█████╔╝██║  ██║╚██████╗██║  ██║\n"
             f"{CYAN}╚══════╝╚═╝  ╚═╝   ╚═╝       ╚═════╝    ╚═╝       ╚═╝     ╚═╝╚═╝   ╚═╝ ╚════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝\n\n"
         )
-        print(big_title)
+
+        print(menu_title)
         print(f"{YELLOW}[1] {GREEN}View System Information")
         print(f"{YELLOW}[2] {GREEN}View Storage Capacity")
         print(f"{YELLOW}[3] {GREEN}View CPU Usage")
         print(f"{YELLOW}[4] {GREEN}View Memory Usage")
         print(f"{YELLOW}[5] {GREEN}View Network Information")
         print(f"{YELLOW}[6] {GREEN}List Running Processes")
-        print(f"{YELLOW}[7] {RED}Kill a Process")
+        print(f"{YELLOW}[7] {GREEN}View Uptime")
         print(f"{YELLOW}[8] {RED}Exit")
 
     def view_system_info(self):
         self.clear_screen()
-        print(f"{CYAN}=== System Information ==={WHITE}\n")
+
+        menu_title = (
+            f"\n\n███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗    ██╗███╗   ██╗███████╗ ██████╗\n"
+            f"██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║    ██║████╗  ██║██╔════╝██╔═══██╗\n"
+            f"███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║    ██║██╔██╗ ██║█████╗  ██║   ██║\n"
+            f"╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║    ██║██║╚██╗██║██╔══╝  ██║   ██║\n"
+            f"╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║    ██║██║╚██╗██║██╔══╝  ██║   ██║\n"
+            f"███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║    ██║██║ ╚████║██║     ╚██████╔╝\n"
+            f"╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝    ╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝ \n"
+        )
+        print(menu_title)
         print(f"{YELLOW}System: {WHITE}{platform.system()}")
         print(f"{YELLOW}Node Name: {WHITE}{platform.node()}")
         print(f"{YELLOW}Release: {WHITE}{platform.release()}")
@@ -52,8 +63,16 @@ class SystemAdminTool:
         input("\nPress Enter to return to the main menu.")
 
     def view_storage_capacity(self):
+        menu_title = (
+        f"\n\n███████╗████████╗ ██████╗ ██████╗  █████╗  ██████╗ ███████╗     ██████╗ █████╗ ██████╗  █████╗  ██████╗██╗████████╗██╗   ██╗\n"
+            f"██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔══██╗██╔════╝ ██╔════╝    ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔════╝██║╚══██╔══╝╚██╗ ██╔╝\n"
+            f"███████╗   ██║   ██║   ██║██████╔╝███████║██║  ███╗█████╗      ██║     ███████║██████╔╝███████║██║     ██║   ██║    ╚████╔╝\n"
+            f"╚════██║   ██║   ██║   ██║██╔══██╗██╔══██║██║   ██║██╔══╝      ██║     ██╔══██║██╔═══╝ ██╔══██║██║     ██║   ██║     ╚██╔╝\n"
+            f"███████║   ██║   ╚██████╔╝██║  ██║██║  ██║╚██████╔╝███████╗    ╚██████╗██║  ██║██║     ██║  ██║╚██████╗██║   ██║      ██║\n"
+            f"╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝     ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚═╝   ╚═╝      ╚═╝\n"
+        )
         self.clear_screen()
-        print(f"{CYAN}=== Storage Capacity ==={WHITE}\n")
+        print(menu_title)
         partitions = psutil.disk_partitions()
         for partition in partitions:
             usage = psutil.disk_usage(partition.mountpoint)
@@ -65,16 +84,34 @@ class SystemAdminTool:
         input("Press Enter to return to the main menu.")
 
     def view_cpu_usage(self):
+
+        menu_title = (
+            f"\n\n ██████╗██████╗ ██╗   ██╗    ██╗   ██╗███████╗ █████╗  ██████╗ ███████╗\n"
+                f"██╔════╝██╔══██╗██║   ██║    ██║   ██║██╔════╝██╔══██╗██╔════╝ ██╔════╝\n"
+                f"██║     ██████╔╝██║   ██║    ██║   ██║███████╗███████║██║  ███╗█████╗\n"
+                f"██║     ██╔═══╝ ██║   ██║    ██║   ██║╚════██║██╔══██║██║   ██║██╔══╝\n"
+                f"╚██████╗██║     ╚██████╔╝    ╚██████╔╝███████║██║  ██║╚██████╔╝███████╗\n"
+                f" ╚═════╝╚═╝      ╚═════╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝\n"
+            )
         self.clear_screen()
-        print(f"{CYAN}=== CPU Usage ==={WHITE}\n")
+        print(menu_title)
         cpu_percent = psutil.cpu_percent(interval=1, percpu=True)
         for i, percent in enumerate(cpu_percent):
             print(f"{YELLOW}CPU {i}: {WHITE}{percent}%")
         input("\nPress Enter to return to the main menu.")
 
     def view_memory_usage(self):
+
+        menu_title = (
+                f"\n\n███╗   ███╗███████╗███╗   ███╗ ██████╗ ██████╗ ██╗   ██╗    ██╗   ██╗███████╗ █████╗  ██████╗ ███████╗\n"
+                f"████╗ ████║██╔════╝████╗ ████║██╔═══██╗██╔══██╗╚██╗ ██╔╝    ██║   ██║██╔════╝██╔══██╗██╔════╝ ██╔════╝\n"
+                f"██╔████╔██║█████╗  ██╔████╔██║██║   ██║██████╔╝ ╚████╔╝     ██║   ██║███████╗███████║██║  ███╗█████╗\n"
+                f"██║╚██╔╝██║██╔══╝  ██║╚██╔╝██║██║   ██║██╔══██╗  ╚██╔╝      ██║   ██║╚════██║██╔══██║██║   ██║██╔══╝ \n"
+                f"██║ ╚═╝ ██║███████╗██║ ╚═╝ ██║╚██████╔╝██║  ██║   ██║       ╚██████╔╝███████║██║  ██║╚██████╔╝███████╗\n"
+                f"╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝        ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝\n"
+            )
         self.clear_screen()
-        print(f"{CYAN}=== Memory Usage ==={WHITE}\n")
+        print(menu_title)
         memory = psutil.virtual_memory()
         print(f"{YELLOW}Total Memory: {WHITE}{memory.total / (2**30):.2f} GB")
         print(f"{YELLOW}Used Memory: {WHITE}{memory.used / (2**30):.2f} GB")
@@ -82,8 +119,16 @@ class SystemAdminTool:
         input("\nPress Enter to return to the main menu.")
 
     def view_network_info(self):
+        menu_title = (
+            f"\n\n███╗   ██╗███████╗████████╗██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗    ██╗███╗   ██╗███████╗ ██████╗ \n"
+            f"████╗  ██║██╔════╝╚══██╔══╝██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝    ██║████╗  ██║██╔════╝██╔═══██╗\n"
+            f"██╔██╗ ██║█████╗     ██║   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝     ██║██╔██╗ ██║█████╗  ██║   ██║\n"
+            f"██║╚██╗██║██╔══╝     ██║   ██║███╗██║██║   ██║██╔══██╗██╔═██╗     ██║██║╚██╗██║██╔══╝  ██║   ██║\n"
+            f"██║ ╚████║███████╗   ██║   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗    ██║██║ ╚████║██║     ╚██████╔╝\n"
+            f"╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝╚═╝  ╚═══╝╚═╝      ╚═════╝ \n"
+        )
         self.clear_screen()
-        print(f"{CYAN}=== Network Information ==={WHITE}\n")
+        print(menu_title)
         interfaces = psutil.net_if_addrs()
         for name, addrs in interfaces.items():
             print(f"{YELLOW}Interface: {WHITE}{name}")
@@ -92,29 +137,51 @@ class SystemAdminTool:
         input("\nPress Enter to return to the main menu.")
 
     def list_running_processes(self):
+
+        menu_title = (
+            f"\n\n██████╗ ██████╗  ██████╗  ██████╗███████╗███████╗███████╗███████╗███████╗\n"
+            f"██╔══██╗██╔══██╗██╔═══██╗██╔════╝██╔════╝██╔════╝██╔════╝██╔════╝██╔════╝\n"
+            f"██████╔╝██████╔╝██║   ██║██║     █████╗  ███████╗███████╗█████╗  ███████╗\n"
+            f"██╔═══╝ ██╔══██╗██║   ██║██║     ██╔══╝  ╚════██║╚════██║██╔══╝  ╚════██║\n"
+            f"██║     ██║  ██║╚██████╔╝╚██████╗███████╗███████║███████║███████╗███████║\n"
+            f"╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝╚══════╝╚══════╝╚══════╝╚══════╝╚══════╝\n"
+        ) 
         self.clear_screen()
-        print(f"{CYAN}=== Running Processes ==={WHITE}\n")
+        print(menu_title)
         for process in psutil.process_iter(['pid', 'name']):
             print(f"{YELLOW}PID: {WHITE}{process.info['pid']}, {YELLOW}Name: {WHITE}{process.info['name']}")
         input("\nPress Enter to return to the main menu.")
 
-    def kill_process(self, pid):
-        if platform.system().lower() == "windows":
-            os.system(f"taskkill /F /PID {pid}")
-            print(f"\n{RED}Process with PID {pid} terminated successfully.")
-        else:
-            print(f"\n{RED}Sorry, the taskkill feature is only supported on Windows.")
-
     def view_uptime(self):
+
+        menu_title = (
+            f"\n\n██╗   ██╗██████╗ ████████╗██╗███╗   ███╗███████╗\n"
+            f"██║   ██║██╔══██╗╚══██╔══╝██║████╗ ████║██╔════╝\n"
+            f"██║   ██║██████╔╝   ██║   ██║██╔████╔██║█████╗ \n"
+            f"██║   ██║██╔═══╝    ██║   ██║██║╚██╔╝██║██╔══╝  \n"
+            f"╚██████╔╝██║        ██║   ██║██║ ╚═╝ ██║███████╗\n"
+            f" ╚═════╝ ╚═╝        ╚═╝   ╚═╝╚═╝     ╚═╝╚══════╝\n"
+        ) 
         self.clear_screen()
-        print(f"{CYAN}=== Uptime ==={WHITE}\n")
+        print(menu_title)
         uptime = psutil.boot_time()
         print(f"{YELLOW}Uptime: {WHITE}{psutil.datetime.datetime.fromtimestamp(uptime)}")
         input("\nPress Enter to return to the main menu.")
 
     def exit_tool(self):
+
+        menu_title = (
+            f"\n\n{RED}███████╗██╗  ██╗██╗████████╗██╗███╗   ██╗ ██████╗ \n"
+            f"{RED}██╔════╝╚██╗██╔╝██║╚══██╔══╝██║████╗  ██║██╔════╝ \n"
+            f"{RED}█████╗   ╚███╔╝ ██║   ██║   ██║██╔██╗ ██║██║  ███╗\n"
+            f"{RED}██╔══╝   ██╔██╗ ██║   ██║   ██║██║╚██╗██║██║   ██║\n"
+            f"{RED}███████╗██╔╝ ██╗██║   ██║   ██║██║ ╚████║╚██████╔╝\n"
+            f"{RED}╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ \n"
+        ) 
+        
         self.is_running = False
-        print(f"{RED}Exiting the System Administration Tool. Goodbye!")
+        print(menu_title)
+        print(f"{RED}Exiting the SAT. Goodbye!")
 
     def main(self):
         while self.is_running:
@@ -133,8 +200,7 @@ class SystemAdminTool:
             elif choice == '6':
                 self.list_running_processes()
             elif choice == '7':
-                process_pid = input(f"{CYAN}Enter the PID of the process to kill: ")
-                self.kill_process(int(process_pid))
+                self.view_uptime()
             elif choice == '8':
                 self.exit_tool()
             else:
