@@ -2,6 +2,7 @@ import platform
 import os
 import colorama
 import psutil
+from datetime import datetime
 
 # Initialize colorama
 colorama.init()
@@ -30,6 +31,8 @@ class SystemAdminTool:
             f"{CYAN}███████║██║  ██║   ██║       ██████╔╝   ██║       ██║ ╚═╝ ██║██║   ██║╚█████╔╝██║  ██║╚██████╗██║  ██║\n"
             f"{CYAN}╚══════╝╚═╝  ╚═╝   ╚═╝       ╚═════╝    ╚═╝       ╚═╝     ╚═╝╚═╝   ╚═╝ ╚════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝\n\n"
         )
+        
+ 
 
         print(menu_title)
         print(f"{YELLOW}[1] {GREEN}View System Information")
@@ -151,9 +154,8 @@ class SystemAdminTool:
         for process in psutil.process_iter(['pid', 'name']):
             print(f"{YELLOW}PID: {WHITE}{process.info['pid']}, {YELLOW}Name: {WHITE}{process.info['name']}")
         input("\nPress Enter to return to the main menu.")
-
+    
     def view_uptime(self):
-
         menu_title = (
             f"\n\n██╗   ██╗██████╗ ████████╗██╗███╗   ███╗███████╗\n"
             f"██║   ██║██╔══██╗╚══██╔══╝██║████╗ ████║██╔════╝\n"
@@ -161,12 +163,21 @@ class SystemAdminTool:
             f"██║   ██║██╔═══╝    ██║   ██║██║╚██╔╝██║██╔══╝  \n"
             f"╚██████╔╝██║        ██║   ██║██║ ╚═╝ ██║███████╗\n"
             f" ╚═════╝ ╚═╝        ╚═╝   ╚═╝╚═╝     ╚═╝╚══════╝\n"
-        ) 
+        )
         self.clear_screen()
         print(menu_title)
-        uptime = psutil.boot_time()
-        print(f"{YELLOW}Uptime: {WHITE}{psutil.datetime.datetime.fromtimestamp(uptime)}")
+
+        uptime_seconds = psutil.boot_time()
+        uptime_hours = (psutil.datetime.datetime.now().timestamp() - uptime_seconds) / 3600
+
+        boot_time = datetime.fromtimestamp(uptime_seconds)
+        formatted_boot_time = boot_time.strftime("%Y-%m-%d %H:%M:%S")
+
+        print(f"{YELLOW}Uptime: {WHITE}{uptime_hours:.2f} hours")
+        print(f"{YELLOW}First Online: {WHITE}{formatted_boot_time}")
+
         input("\nPress Enter to return to the main menu.")
+    
 
     def exit_tool(self):
 
